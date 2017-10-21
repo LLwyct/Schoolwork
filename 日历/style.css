@@ -1,0 +1,114 @@
+body {
+	font-family: '微软雅黑';
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.all {
+    width: 700px;
+    margin: 0 auto;
+}
+
+
+.year {
+    text-align: center;
+    font-size: 25px;
+}
+
+.month {
+    text-align: center;
+    font-size: 20px;
+    width: 30px;
+}
+
+.content-top {
+    background-color: #009478;/*#949393;*/
+}
+
+.content {
+    background-color: #EEEEEE;
+}
+
+.week-day {
+    width: 100px;
+    text-align: center;
+    float: left;
+}
+
+.week {
+    padding: 10px 0;
+    background-color: #DDDDDD;
+}
+
+.row {
+    /*width: 700px;*/
+}
+
+
+.day {
+    margin: 10px 35px 10px 35px;
+    float: left;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+	border-radius: 2px;
+}
+
+.day-select:hover {
+    cursor: pointer;
+    background-color: #FF9966;
+}
+
+.clear {
+    clear: both;
+}
+
+.active {
+    background-color: #66CDAA;
+}
+
+.float {
+    float: left;
+}
+
+.btn {
+    font-size: 20px;
+    margin: 0 20px;
+    cursor: pointer;
+    border: none;
+	outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(68, 32, 32, 0.05);
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.09);
+}
+
+.select-year {
+    width: auto;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.select-month {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.select-year div {
+    display: table;
+    margin: 0 auto;
+    line-height: 40px;
+}
+
+.select-month div {
+    display: table;
+    margin: 0 auto;
+    line-height: 40px;
+}

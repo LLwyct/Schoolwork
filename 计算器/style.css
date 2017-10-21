@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#expression {
+    width: 473px;
+    height: 50px;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.all {
+    text-align: center;
+    margin: 20px auto 20px;
+}
+
+.row {
+    display:  block;
+}
+
+.btn {
+    width: 70px;
+    height: 65px;
+    font-size: 20px;
+    border: none;
+    margin: 3px;
+    /*border-radius: 0px;*/
+    color: white;
+    background-color: #365e71;
+}
+
+.btn:hover {
+    background-color: #6b96ab;
+}
+
+.btn-width {
+    width: 154px;
+}
