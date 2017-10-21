@@ -21,12 +21,10 @@
     initContent()
 
     function selectDay() {
-        console.log('ss');
         nowdata.year = div_year.innerText
         nowdata.month = div_month.innerText
         nowdata.day = this.innerText
         var nowaday_div = document.getElementsByClassName('active')
-        console.log(nowaday_div);
         if(nowaday_div.length == 0) {
             this.classList.add('active')
             this.classList.remove('day-select')
@@ -50,8 +48,10 @@
             divs[i].innerText = ''
             divs[i].classList.remove('active')
             divs[i].classList.remove('day-select')
+			divs[i].classList.remove('cant-select')
             divs[i].removeEventListener('click', selectDay,false)
         }
+        month_day[1] = 28
         var isRunYear = div_year.innerText
         if(((isRunYear%4==0)&&(isRunYear%100!=0))||isRunYear%400==0) {
             month_day[1] = 29
@@ -79,9 +79,17 @@
                 divs[i].classList.add('day-select')
                 divs[i].addEventListener('click', selectDay,false)
             }
+			else if(parseInt(div_year.innerText)==initdata.year && parseInt(div_month.innerText)==initdata.month && j-1==initdata.day) {
+				divs[i].classList.add('day-select')
+                divs[i].addEventListener('click', selectDay,false)
+			}
+			else {
+                divs[i].classList.add('cant-select')
+            }
             if(div_year.innerText==nowdata.year && div_month.innerText==nowdata.month && j-1 == nowdata.day) {
                 divs[i].classList.add('active')
-                divs[i].classList.remove('day-select')
+				divs[i].classList.remove('day-select')
+				divs[i].removeEventListener('click', selectDay)
             }
         }
     }

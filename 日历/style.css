@@ -1,4 +1,4 @@
-body {
+﻿body {
 	font-family: '微软雅黑';
 }
 
@@ -10,6 +10,7 @@ body {
 .all {
     width: 700px;
     margin: 0 auto;
+	box-shadow: 3px 6px 15px black;
 }
 
 
@@ -25,7 +26,7 @@ body {
 }
 
 .content-top {
-    background-color: #009478;/*#949393;*/
+    background-color: #00A989;/*#949393;*/
 }
 
 .content {
@@ -47,6 +48,9 @@ body {
     /*width: 700px;*/
 }
 
+.row-last .day{
+	margin-bottom: 15px;
+}
 
 .day {
     margin: 10px 35px 10px 35px;
@@ -56,6 +60,10 @@ body {
     text-align: center;
     line-height: 30px;
 	border-radius: 2px;
+}
+
+.cant-select {
+    background-color: #DCDCDC;
 }
 
 .day-select:hover {
@@ -111,4 +119,8 @@ body {
     display: table;
     margin: 0 auto;
     line-height: 40px;
+}
+
+.hidden {
+	visibility: hidden;
 }
