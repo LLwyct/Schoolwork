@@ -1,30 +1,36 @@
-
+//每个月有多少天
     month_day = [31,28,31,30,31,30,31,31,30,31,30,31]
-    var selectelse = false
+//获得当前日期
     var date = new Date()
+//当前的年月日以及礼拜几
     var initdata = {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
         day: date.getDate(),
         week_day: date.getDay()==0?7:date.getDay(),
     }
+//目前选择的日期
     var nowdata = {
         year: initdata.year,
         month: initdata.month,
         day: initdata.day,
     }
-
+//获得用户选择的年份
     var div_year = document.getElementsByClassName('year')[0]
     div_year.innerText = initdata.year
+//获得用户选择的月份
     var div_month = document.getElementsByClassName('month')[0]
     div_month.innerText = initdata.month
+//第一次初始化日历内容
     initContent()
-
+//用户选择日期
     function selectDay() {
+        //重置nowdata的内容
         nowdata.year = div_year.innerText
         nowdata.month = div_month.innerText
         nowdata.day = this.innerText
         var nowaday_div = document.getElementsByClassName('active')
+        //交换两者的css以及event
         if(nowaday_div.length == 0) {
             this.classList.add('active')
             this.classList.remove('day-select')
@@ -40,7 +46,7 @@
             this.removeEventListener('click', selectDay, false)
         }
     }
-
+//初始化日历内容函数
     function initContent()
     {
         var divs = document.getElementsByClassName('day')
@@ -94,6 +100,7 @@
         }
     }
 
+//为四个button添加事件监听
     var btns = document.getElementsByClassName('btn')
 
     btns[0].addEventListener('click', function(){

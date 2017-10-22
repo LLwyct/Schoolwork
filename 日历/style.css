@@ -63,7 +63,7 @@
 }
 
 .cant-select {
-    background-color: #DCDCDC;
+    color: gray;
 }
 
 .day-select:hover {
