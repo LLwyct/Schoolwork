@@ -85,7 +85,7 @@
                 divs[i].classList.add('day-select')
                 divs[i].addEventListener('click', selectDay,false)
             }
-			else if(parseInt(div_year.innerText)==initdata.year && parseInt(div_month.innerText)==initdata.month && j-1==initdata.day) {
+	    	else if(parseInt(div_year.innerText)==initdata.year && parseInt(div_month.innerText)==initdata.month && j-1==initdata.day) {
 				divs[i].classList.add('day-select')
                 divs[i].addEventListener('click', selectDay,false)
 			}
