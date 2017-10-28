@@ -1,0 +1,16 @@
+*{
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+}
+
+#teacherlist{
+    display: none;
+}
+
+.point{
+    color: blue;
+    cursor: pointer;
+}
+
+.form-control{
+    width: 500px;
+}
