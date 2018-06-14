@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assert/element.css">
+    <link rel="stylesheet" href="../assert/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 class="title">实验二 段页式虚拟存储管理</h1>
+    <div v-cloak id="app">
+        <div class="b1">
+            <el-card class="box-card">
+                <div class="row">
+                    <label>段数</label>
+                    <el-slider v-model="segment_num" :max="4" :min="1"></el-slider>
+                </div>
+                <div class="row">
+                    <label for="">段大小(K)</label>
+                    <el-slider v-model="segment_size" :max="16" :min="1"></el-slider>
+                </div>
+                <div class="btn">
+                    <el-button type="success" round v-on:click="create_process">创建</el-button>
+                </div>
+                <div class="switch">
+                    <div>FIFO</div>
+                    <el-switch v-model="mode" active-color="#13ce66" inactive-color="#409eff">
+                    </el-switch>
+                    <div>LRU</div>
+                </div>
+            </el-card>
+        </div>
+        <div class="b2">
+            <div class="b2-1">
+                <el-card class="box-card">
+                    <div class="mytable">
+                        <div class="thead">
+                            <div class="theadl">
+                                <div>进程号</div>
+                                <div>段数</div>
+                                <div>段大小</div>
+                            </div>
+                            <div class="theadr">
+                    
+                            </div>
+                        </div>
+                        <div class="tbody">
+                            <div class="a-process"  v-for="(item, index) in process_queue">
+                                <div class="info">
+                                    <div>{{item.pid}}</div>
+                                    <div>{{item.segment_num}}</div>
+                                    <div>{{item.segment_size}}</div>
+                                </div>
+                                <div class="opera">
+                                    <div class="operabtn">
+                                        <el-button icon="el-icon-caret-bottom" circle size="mini" v-on:click="show_in_b2_2(index)"></el-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </el-card>
+            </div>
+            <div class="b2-2">
+                <el-card class="box-card">
+                    <div class="mytable">
+                        <div class="thead">
+                            <div class="theadl">
+                                <div>进程号</div>
+                                <div>段号</div>
+                                <div>页号</div>
+                                <div>占用</div>
+                            </div>
+                            <div class="theadr">
+                
+                            </div>
+                        </div>
+                        <div class="tbody">
+                            <div class="a-process" v-for="(item, index) in b2_2_queue">
+                                <div class="info">
+                                    <div>{{item.pid}}</div>
+                                    <div>{{item.d}}</div>
+                                    <div>{{item.y}}</div>
+                                    <div if>{{item.exist}}</div>
+                                </div>
+                                <div class="opera">
+                                    <div class="operabtn">
+                                        <el-button icon="el-icon-caret-right" circle size="mini" v-on:click="displace(item.pid, item.d, item.y)"></el-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </el-card>
+            </div>
+        </div>
+        <div class="b3">
+            <el-card class="box-card">
+                <div class="mytable">
+                    <div class="thead">
+                        <div class="theadl">
+                            <div>页号</div>
+                            <div>进程-段-页</div>
+                        </div>
+                        <div class="theadr">
+                
+                        </div>
+                    </div>
+                    <div class="tbody">
+                        <div class="a-process" v-for="(item, index) in memory">
+                            <div class="info">
+                                <div>{{index}}</div>
+                                <div v-if="item == -1">空闲</div>
+                                <div v-else-if="item != -1">{{item[0]}} - {{item[1]}} - {{item[2]}}</div>
+                            </div>
+                            <div class="opera">
+                                <div class="operabtn">
+                                    <el-button icon="el-icon-caret-right" circle size="mini" v-on:click="toblock(index)"></el-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </el-card>
+        </div>
+    </div>
+    <script src="../assert/vue.js"></script>
+    <script src="../assert/element.js"></script>
+    <script src="../assert/index.js"></script>
+</body>
+</html>

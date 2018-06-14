@@ -1,0 +1,115 @@
+[v-cloak] {
+    display: none !important;
+}
+body{
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#app{
+    display: flex;
+}
+.el-card{
+    width: 100%;
+    
+    .btn {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+// b1
+.b1{
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    .switch{
+        margin-top: 20px; 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+// b2
+.b2{
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    // b2-1
+    .b2-1{
+        display: flex;
+        margin-bottom: 10px;
+    }
+    // b2-2
+    .b2-2{
+        display: flex;
+    }
+}
+// b3
+.b3{
+    display: flex;
+    flex: 2;
+    padding: 0 10px;
+}
+
+.mytable{
+    display: flex;
+    flex-direction: column;
+    .thead{
+        display: flex;
+        border-bottom: 1px solid #00000012;
+        padding: 5px 0;
+        .theadl{
+            display: flex;
+            flex: 8;
+            div{
+                flex: 2;
+            }
+        }
+        .theadr{
+            flex: 2;
+        }
+    }
+    .tbody{
+        display: flex;
+        flex-direction: column;
+        .a-process{
+            display: flex;
+            justify-content: space-between;
+            .info{
+                display: flex;
+                flex: 8;
+                div{
+                    flex: 1;
+                }
+            }
+            .opera{
+                display: flex;
+                flex: 2;
+                .prog{
+                    display: flex;
+                    flex: 1;
+                    align-items: center;
+                    padding-right: 5px;
+                }
+                .operabtn{
+                    display: flex;
+                    flex: 1;
+                    flex-direction: row;
+                    align-items: center;
+                }
+                .el-button.is-circle {
+                    border-radius: 50%;
+                    padding: 2px;
+                }
+            }
+        }
+    }
+}

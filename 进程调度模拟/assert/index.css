@@ -1,0 +1,128 @@
+/* 左侧边栏 */
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#app {
+  display: flex;
+}
+.leftbar {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  height: 100%;
+  padding: 5px 10px;
+}
+.boxcard {
+  display: flex;
+  flex-direction: column;
+}
+.boxcard .row {
+  display: flex;
+  flex-direction: column;
+}
+.boxcard .row label {
+  margin: 7px 0 3px 0;
+}
+.boxcard .btn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.queuenumselect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+.maincontrol {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+.mainbar {
+  display: flex;
+  flex: 8;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.showall {
+  margin: 20px;
+  display: flex;
+  width: 100%;
+}
+.showall .leftside {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.showall .rightside {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.queue {
+  margin: 20px 10px;
+}
+.box-card {
+  display: flex;
+  flex-direction: column;
+}
+.box-card .queuename {
+  text-align: center;
+}
+.mytable {
+  display: flex;
+  flex-direction: column;
+}
+.mytable .thead {
+  display: flex;
+  border-bottom: 1px solid #00000012;
+  padding: 5px 0;
+}
+.mytable .thead .theadl {
+  display: flex;
+  flex: 6;
+}
+.mytable .thead .theadl div {
+  flex: 1;
+}
+.mytable .thead .theadr {
+  flex: 4;
+}
+.mytable .tbody {
+  display: flex;
+  flex-direction: column;
+}
+.mytable .tbody .a-process {
+  transition: all 1s;
+  display: flex;
+  justify-content: space-between;
+}
+.mytable .tbody .a-process .info {
+  display: flex;
+  flex: 6;
+}
+.mytable .tbody .a-process .info div {
+  flex: 1;
+}
+.mytable .tbody .a-process .opera {
+  display: flex;
+  flex: 4;
+}
+.mytable .tbody .a-process .opera .prog {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding-right: 5px;
+}
+.mytable .tbody .a-process .opera .operabtn {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+.mytable .tbody .a-process .opera .el-button.is-circle {
+  border-radius: 50%;
+  padding: 2px;
+}
