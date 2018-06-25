@@ -83,6 +83,7 @@ let vm = new Vue({
             let m = p.segment_size;
             // index为逻辑偏移量
             let index = d * m + y;
+            // 已在内存中
             if (p.inmemory[index] != -1) {
                 this.$message('已在驻留集中');
                 // LRU算法，要调换一次顺序
@@ -96,6 +97,7 @@ let vm = new Vue({
                     }
                 }
             }
+            // 不在内存中
             else {
                 // 替换
                 let first_come_index = p.FIFO.shift();
