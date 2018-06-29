@@ -68,10 +68,15 @@ let vm = new Vue({
                     inputPattern: /^[0-9a-zA-Z]{1,}$/,
                     inputErrorMessage: '文件名格式不正确'
                 }).then(({ value }) => {
-                    this.$message({
-                        type: 'success',
-                        message: '创建成功'
-                    });
+                    node.childNodes.forEach(e=>{
+                        if(e.data.label === value) {
+                            this.$message({
+                                type: 'info',
+                                message: '创建失败'
+                            });
+                            p++;
+                        }
+                    })
                     const newChild = { id: id++, label: value, children: [], type: typee };
                     if (!data.children) {
                         this.$set(data, 'children', []);
@@ -92,8 +97,12 @@ let vm = new Vue({
                         length: 0,
                     }
                     this.fileinfos.push(record);
+                    this.$message({
+                        type: 'success',
+                        message: '创建成功'
+                    });
                 }).catch(() => {
-
+                    
                 });
             }
             else {
@@ -103,6 +112,15 @@ let vm = new Vue({
                     inputPattern: /^[0-9a-zA-Z]{1,}\.[a-z0-9]{1,}$/,
                     inputErrorMessage: '文件格式不正确'
                 }).then(({ value }) => {
+                    node.childNodes.forEach(e => {
+                        if (e.data.label === value) {
+                            this.$message({
+                                type: 'info',
+                                message: '创建失败'
+                            });
+                            p++;
+                        }
+                    })
                     const newChild = { id: id++, label: value, children: [], type: typee };
                     if (!data.children) {
                         this.$set(data, 'children', []);
@@ -177,7 +195,8 @@ let vm = new Vue({
                 temp = temp.parent;
             }
             let path = road.reverse().join('/');
-            this.fileinfos.forEach(e => {
+            let waittodel = []
+            this.fileinfos.forEach((e,index) => {
                 if (e.road.search(path) == 0) {
                     if (e.attribute == 4 || e.attribute == 5) {
                         let pos = e.startpos;
@@ -196,7 +215,11 @@ let vm = new Vue({
                         })
                     }
                 }
+                else {
+                    waittodel.push(e);
+                }
             });
+            this.fileinfos = waittodel;
             this.fat.push(1);
             this.fat.pop();
             const parent = node.parent;
@@ -207,32 +230,80 @@ let vm = new Vue({
 
         rename(node, data) {
             // pass
-            this.$prompt('请输入名称', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                inputPattern: /^[0-9a-zA-Z]{1,}\.[a-z0-9]{1,}$/,
-                inputErrorMessage: '格式不正确'
-            }).then(({ value }) => {
-                this.fileinfos.forEach(e => {
-                    if(e.road === getPath(node)) {
-                        let newroad = e.road.split('/');
-                        newroad.pop();
-                        newroad.push(value);
-                        console.log(newroad);
-                        e.road = newroad.join('/');
-                    }
+            if(data.label.search('\\.') != -1) {
+                this.$prompt('请输入名称', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    inputPattern: /^[0-9a-zA-Z]{1,}\.[a-z0-9]{1,}$/,
+                    inputErrorMessage: '格式不正确'
+                }).then(({ value }) => {
+                    node.parent.childNodes.forEach(e => {
+                        if (e.data.label === value) {
+                            this.$message({
+                                type: 'info',
+                                message: '更改失败'
+                            });
+                            p++;
+                        }
+                    })
+                    this.fileinfos.forEach(e => {
+                        if(e.road === getPath(node)) {
+                            let newroad = e.road.split('/');
+                            newroad.pop();
+                            newroad.push(value);
+                            console.log(newroad);
+                            e.road = newroad.join('/');
+                        }
+                    });
+                    data.label = value;
+                    this.$message({
+                        type: 'success',
+                        message: 'success'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '更改失败'
+                    });
                 });
-                data.label = value;
-                this.$message({
-                    type: 'success',
-                    message: 'success'
+            }
+            else {
+                this.$prompt('请输入名称', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    inputPattern: /^[0-9a-zA-Z]{1,}$/,
+                    inputErrorMessage: '格式不正确'
+                }).then(({ value }) => {
+                    node.parent.childNodes.forEach(e => {
+                        if (e.data.label === value) {
+                            this.$message({
+                                type: 'info',
+                                message: '更改失败'
+                            });
+                            p++;
+                        }
+                    })
+                    this.fileinfos.forEach(e => {
+                        if (e.road === getPath(node)) {
+                            let newroad = e.road.split('/');
+                            newroad.pop();
+                            newroad.push(value);
+                            console.log(newroad);
+                            e.road = newroad.join('/');
+                        }
+                    });
+                    data.label = value;
+                    this.$message({
+                        type: 'success',
+                        message: 'success'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '更改失败'
+                    });
                 });
-            }).catch(() => {
-                this.$message({
-                    type: 'info',
-                    message: '取消输入'
-                });
-            });
+            }
         },
         open(node, data) {
             // pass
