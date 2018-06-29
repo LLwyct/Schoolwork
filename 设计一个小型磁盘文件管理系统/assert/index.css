@@ -1,0 +1,149 @@
+[v-cloak] {
+  display: none !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-size: 16px;
+}
+#app {
+  display: flex;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+.left .operation {
+  padding: 20px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.17);
+  display: flex;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  flex: 1;
+}
+.custom-tree-node {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 8px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  flex: 3;
+}
+.right .fat {
+  display: flex;
+  flex-wrap: wrap;
+}
+.right .fat .a-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  height: 30px;
+  width: 30px;
+  background-color: #009900;
+  color: aliceblue;
+  box-shadow: 2px 2px 5px #858585;
+  border-radius: 5px;
+  border: 1px solid snow;
+}
+.right .listandshow {
+  display: flex;
+}
+.right .listandshow .openlist {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  border-radius: 5px;
+}
+.right .listandshow .openlist .header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.right .listandshow .openlist .header div {
+  flex: 1;
+}
+.right .listandshow .openlist .openfile {
+  display: flex;
+  justify-content: space-between;
+}
+.right .listandshow .openlist .openfile div {
+  flex: 1;
+}
+.right .listandshow .filecontent {
+  display: flex;
+  flex: 1;
+}
+.used {
+  background-color: orangered !important;
+}
+.mytable {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+}
+.mytable .thead {
+  display: flex;
+  border-bottom: 1px solid #00000012;
+  padding: 5px 0;
+}
+.mytable .thead .theadl {
+  display: flex;
+  flex: 9;
+}
+.mytable .thead .theadl div {
+  flex: 1;
+}
+.mytable .thead .theadr {
+  flex: 1;
+}
+.mytable .tbody {
+  display: flex;
+  flex-direction: column;
+}
+.mytable .tbody .a-process {
+  display: flex;
+  justify-content: space-between;
+}
+.mytable .tbody .a-process .info {
+  display: flex;
+  flex: 9;
+}
+.mytable .tbody .a-process .info div {
+  flex: 1;
+}
+.mytable .tbody .a-process .opera {
+  display: flex;
+  flex: 1;
+}
+.mytable .tbody .a-process .opera .prog {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding-right: 5px;
+}
+.mytable .tbody .a-process .opera .operabtn {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+.mytable .tbody .a-process .opera .el-button.is-circle {
+  border-radius: 50%;
+  padding: 2px;
+}
+.mycard {
+  padding: 20px;
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.17);
+}

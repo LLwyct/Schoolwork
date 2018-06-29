@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../assert/index.css">
+    <link rel="stylesheet" href="../assert/element.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1 class="title">实验三 </h1> -->
+    <div v-cloak id="app">
+        <div class="left">
+            <div class="dirtree mycard">
+                <el-tree :data="treedata" show-checkbox node-key="id" default-expand-all :expand-on-click-node="false">
+                    <span class="custom-tree-node" slot-scope="{ node, data }">
+                        <span>{{ node.label }}</span>
+                        <span>
+                            <el-button type="text" size="small" @click="() => open(node, data)" v-if="data.type == 1">
+                                打开
+                            </el-button>
+                            <el-button type="text" size="small" @click="() => append(node, data, 0)" v-if="data.type == 0">
+                                创建文件夹
+                            </el-button>
+                            <el-button type="text" size="small" @click="() => append(node, data, 1)" v-if="data.type == 0">
+                                创建文件
+                            </el-button>
+                            <el-button type="text" size="small" @click="() => remove(node, data)" v-if="data.id != 1">
+                                删除
+                            </el-button>
+                            <el-button type="text" size="small" @click="() => rename(node, data)">
+                                重命名
+                            </el-button>
+                            <el-button type="text" size="small" @click="() => update_attribute(node, data)" v-if="data.type == 1">
+                                修改属性
+                            </el-button>
+                        </span>
+                    </span>
+                </el-tree>
+            </div>
+            <div class="operation">
+                <el-form ref="form" :model="form" label-width="80px">
+                    <el-form-item label="文件大小">
+                        <el-input v-model="form.size"></el-input>
+                    </el-form-item>
+                    <el-form-item label="文件类型">
+                        <el-radio-group v-model="form.resource">
+                            <el-radio label="读写"></el-radio>
+                            <el-radio label="只读"></el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                    <el-form-item label="文件类型">
+                        <el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="form.content">
+                        </el-input>
+                    </el-form-item>
+                </el-form>
+            </div>
+        </div>
+        <div class="right">
+            <div class="fat">
+                <div class="a-block" v-for="(item, index) in block_num" v-bind:class="{used: fat_use[index]}">
+                    <div v-bind:class="{used: fat_use[index]}">{{fat[index]}}</div>
+                </div>
+            </div>
+            <div class="listandshow">
+                <div class="openlist mycard" v-if="openfile_list.length">
+                    <div class="mytable">
+                        <div class="thead">
+                            <div class="theadl">
+                                <div>path</div>
+                                <div>文件属性</div>
+                                <div>起始块号</div>
+                                <div>文件长度</div>
+                            </div>
+                            <div class="theadr">
+                    
+                            </div>
+                        </div>
+                        <div class="tbody">
+                            <div class="a-process" v-for="(item, index) in openfile_list">
+                                <div class="info">
+                                    <div>{{item.road}}</div>
+                                    <div>{{item.attribute}}</div>
+                                    <div>{{item.startpos}}</div>
+                                    <div>{{item.length}}</div>
+                                </div>
+                                <div class="opera">
+                                    <div class="operabtn">
+                                        <el-button icon="el-icon-caret-right" circle size="mini" @click="showcontent(index)"></el-button>
+                                        <el-button icon="el-icon-close" circle size="mini" @click="close(index)"></el-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filecontent mycard" v-if="show_record">
+                    <div v-if="show_record.attribute %2 == 1">
+                        {{show_record.content}}
+                    </div>
+                    <div v-else>
+                        <el-input type="textarea" :rows="5" placeholder="请输入内容" v-model="show_record.content">
+                        </el-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assert/vue.js"></script>
+    <script src="../assert/element.js"></script>
+    <script src="../assert/index.js"></script>
+</body>
+</html>
