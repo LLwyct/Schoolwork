@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        font-family: sans-serif;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .container .box{
+        position: relative;
+        width: 300px;
+        padding: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, .1);
+        border-radius: 4px;
+        margin: 20px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-align: center;
+    }
+    .container .box .icon{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #000;
+        color: #fff;
+        font-size: 40px;
+        font-weight: 700;
+        transition: 0.5s;
+    }
+    .container .box:nth-child(1) .icon{
+        box-shadow: 0 0 0 0 #e91e63;
+        background: #e91e63;
+    }
+    .container .box:nth-child(1):hover .icon{
+    box-shadow: 0 0 0 400px #e91e63;
+    }
+    .container .box:nth-child(2) .icon{
+        box-shadow: 0 0 0 0 #661e63;
+        background: #661e63;
+    }
+    .container .box:nth-child(2):hover .icon{
+    box-shadow: 0 0 0 400px #661e63;
+    }
+    .container .box:nth-child(3) .icon{
+        box-shadow: 0 0 0 0 #2196f3;
+        background: #2196f3;
+    }
+    .container .box:nth-child(3):hover .icon{
+    box-shadow: 0 0 0 400px #2196f3;
+    }
+    .container .box .content {
+        position: relative;
+        /* 这里position必须要用relatuve，z-index才有用 */
+        z-index: 1;
+    }
+    .container .box:hover .content {
+        color: white;
+    }
+    .container .box .content h3 {
+        font-size: 20px;
+        padding: 0;
+        margin: 10px 0;
+    }
+    .container .box .content p {
+        padding: 0;
+        margin: 0;
+    }
+    a {
+        display: inline-block;
+        border-radius: 4px;
+        text-decoration: none;
+        padding: 10px 20px;
+        background: #fff;
+        color: #000;
+        margin-top: 20px;
+        font-weight: 700;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+    }
+    .btn:hover {
+        cursor: pointer;
+    }
+    .container .box::before {
+        content: '';
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background: rgba(255, 255, 255, .2);
+        z-index: 2;
+        pointer-events: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="icon">01</div>
+            <div class="content">
+                <h3>service name</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ratione, repellat reprehenderit unde autem omnis!
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+        <div class="box">
+            <div class="icon">02</div>
+            <div class="content">
+                <h3>service name</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ratione, repellat reprehenderit unde autem omnis!
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+        <div class="box">
+            <div class="icon">03</div>
+            <div class="content">
+                <h3>service name</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ratione, repellat reprehenderit unde autem omnis!
+                </p>
+                <a href="#" class="btn">Read More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
